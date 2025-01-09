@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .welcome {
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .appointments, .caregiver, .notifications, .make-appointment, .senior-profile {
+            margin: 20px 0;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            color: #444;
+            border-bottom: 2px solid #d2a679;
+            padding-bottom: 5px;
+        }
+
+        .card {
+            padding: 10px;
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .button {
+            background-color: #d2a679;
+            color: #fff;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #b58863;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input, select, textarea, button {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div class="welcome">Welcome, User</div>
+            <div class="logout">
+                <a href="logout.html" class="button">Logout</a>
+            </div>
+        </div>
+
+        <div class="senior-profile">
+            <h2>Senior Profile</h2>
+            <div class="card">
+                <p><strong>Name:</strong> John Doe</p>
+                <p><strong>Date of Birth:</strong> 01/01/1940</p>
+                <p><strong>Medical Condition:</strong> Hypertension</p>
+                <p><strong>Address:</strong> 456 Oak Street, Springfield</p>
+            </div>
+        </div>
+
+        <div class="appointments">
+            <h2>Upcoming Appointments</h2>
+            <div class="card">
+                <p><strong>Doctor:</strong> Dr. Smith</p>
+                <p><strong>Date:</strong> 12/12/2024</p>
+                <p><strong>Status:</strong> Confirmed</p>
+                <a href="#" class="button">Reschedule</a>
+            </div>
+        </div>
+
+        <div class="caregiver">
+            <h2>Assigned Caregiver</h2>
+            <div class="card">
+                <p><strong>Name:</strong> Jane Doe</p>
+                <p><strong>Specialty:</strong> Physical Therapy</p>
+                <a href="#" class="button">Contact Caregiver</a>
+            </div>
+        </div>
+
+        <div class="notifications">
+            <h2>Notifications</h2>
+            <div class="card">
+                <p>You have an upcoming appointment on 12/12/2024.</p>
+            </div>
+        </div>
+
+       
+</body>
+</html>

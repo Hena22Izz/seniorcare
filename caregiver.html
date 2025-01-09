@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User and Caregiver Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .welcome {
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            color: #444;
+            border-bottom: 2px solid #d2a679;
+            padding-bottom: 5px;
+            margin-top: 20px;
+        }
+
+        .card {
+            padding: 10px;
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .button {
+            background-color: #d2a679;
+            color: #fff;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #b58863;
+        }
+
+        .caregiver-info {
+            margin-top: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input, select, textarea, button {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div class="welcome">Welcome, Alin </div>
+            <div class="logout">
+                <a href="logout.html" class="button">Logout</a>
+            </div>
+        </div>
+
+        <!-- Caregiver Dashboard -->
+        <div class="caregiver-dashboard">
+            <h2>Caregiver Dashboard</h2>
+            <div class="caregiver-info">
+                <p><strong>Caregiver ID:</strong> CG12345</p>
+                <p><strong>Name:</strong> Alin Doe</p>
+                <p><strong>Address:</strong> Kampung melati</p>
+                <p><strong>Specialty:</strong> Physical Therapy</p>
+                <p><strong>Phone Number:</strong> 123-456-7890</p>
+            </div>
+        </div>
+
+        <div class="assigned-patients">
+            <h2>Assigned Patients</h2>
+            <div class="card">
+                <p><strong>Patient Name:</strong> John Smith</p>
+                <p><strong>Medical Condition:</strong> Diabetes</p>
+                <a href="#" class="button">View Details</a>
+            </div>
+            <div class="card">
+                <p><strong>Patient Name:</strong> Mary Johnson</p>
+                <p><strong>Medical Condition:</strong> Hypertension</p>
+                <a href="#" class="button">View Details</a>
+            </div>
+        </div>
+
+        <div class="tasks">
+            <h2>Assigned Tasks</h2>
+            <div class="card">
+                <p><strong>Task:</strong> Administer Medication</p>
+                <p><strong>Patient:</strong> John Smith</p>
+                <p><strong>Due Date:</strong> 12/12/2024</p>
+                <a href="#" class="button">Mark as Complete</a>
+            </div>
+            <div class="card">
+                <p><strong>Task:</strong> Physical Therapy Session</p>
+                <p><strong>Patient:</strong> Mary Johnson</p>
+                <p><strong>Due Date:</strong> 13/12/2024</p>
+                <a href="#" class="button">Mark as Complete</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
