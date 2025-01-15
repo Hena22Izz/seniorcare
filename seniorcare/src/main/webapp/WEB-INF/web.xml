@@ -4,12 +4,10 @@
                              http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
 
-    <!-- Define the welcome file (homepage) -->
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 
-    <!-- Define the AppointmentServlet -->
     <servlet>
         <servlet-name>AppointmentServlet</servlet-name>
         <servlet-class>AppointmentServlet</servlet-class>
@@ -19,4 +17,11 @@
         <servlet-name>AppointmentServlet</servlet-name>
         <url-pattern>/appointment</url-pattern>
     </servlet-mapping>
+
+    <resource-ref>
+        <description>Database Connection</description>
+        <res-ref-name>jdbc/seniorcare</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
 </web-app>
