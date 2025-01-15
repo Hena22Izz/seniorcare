@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.*;
 
 public class AppointmentServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
 
@@ -17,7 +18,6 @@ public class AppointmentServlet extends HttpServlet {
             }
             response.sendRedirect("appointment.jsp");
         } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 
