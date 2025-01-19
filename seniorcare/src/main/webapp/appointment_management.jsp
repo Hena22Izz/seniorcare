@@ -159,7 +159,7 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
+    <!-- Navigation Barr -->
     <nav>
         <ul>
             <li><a href="appointment_management.jsp">Appointments</a></li>
