@@ -6,162 +6,130 @@
     <meta charset="UTF-8">
     <title>Appointment Management</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+        /* Basic Reset */
+        body, h1, h2, p, table {
             margin: 0;
             padding: 0;
-        }
-        h1 {
-            text-align: center;
-            margin-top: 50px;
-            color: #4CAF50;
-        }
-         nav {
-            background-color: #2a2f36;
-            overflow: hidden;
+            font-family: Arial, sans-serif;
         }
 
+        /* Body Styling */
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+
+        /* Navigation Bar Styling */
         nav ul {
             list-style-type: none;
-            margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
+            background-color: #2c3e50;
         }
 
-        nav li {
+        nav ul li {
+            display: inline-block;
             position: relative;
         }
 
-        nav a {
+        nav ul li a {
             display: block;
+            padding: 10px 20px;
             color: white;
-            text-align: center;
-            padding: 14px 20px;
             text-decoration: none;
-            transition: background 0.3s;
         }
 
-        nav a:hover, nav li:hover > a {
-            background-color: #ff6f61;
-            color: white;
+        nav ul li a:hover {
+            background-color: #34495e;
         }
 
-        /* Dropdown Menu */
-        nav ul ul {
+        nav ul li ul {
             display: none;
             position: absolute;
-            background-color: #2a2f36;
             top: 100%;
             left: 0;
+            background-color: #2c3e50;
+            padding: 0;
             min-width: 150px;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         nav ul li:hover > ul {
             display: block;
         }
 
-        nav ul ul a {
-            padding: 10px 20px;
-        }
-
-        nav ul ul a:hover {
-            background-color: #ff6f61;
-        }
-
-        /* Responsive Navigation */
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav ul ul {
-                position: static;
-            }
-
-            nav a {
-                padding: 10px;
-                text-align: left;
-            }
-        }
-
+        /* Form and Table Styling */
         form {
-            width: 50%;
-            margin: 0 auto;
+            background-color: white;
             padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
         }
-        label {
-            font-size: 16px;
-            margin-bottom: 8px;
-            display: inline-block;
+
+        form label {
+            display: block;
+            margin: 8px 0;
         }
-        input[type="text"],
-        input[type="date"],
-        input[type="time"],
-        textarea {
+
+        form input, form textarea, form button {
             width: 100%;
             padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
+            margin: 8px 0;
+            border: 1px solid #ddd;
             border-radius: 4px;
         }
-        textarea {
-            height: 100px;
-            resize: vertical;
-        }
-        button {
-            background-color: #4CAF50;
+
+        form button {
+            background-color: #2c3e50;
             color: white;
-            padding: 10px 15px;
             border: none;
-            border-radius: 4px;
             cursor: pointer;
-            font-size: 16px;
         }
-        button:hover {
-            background-color: #45a049;
+
+        form button:hover {
+            background-color: #34495e;
         }
+
         table {
-            width: 80%;
-            margin: 30px auto;
+            width: 100%;
+            margin-top: 20px;
             border-collapse: collapse;
         }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
         th, td {
             padding: 12px;
             text-align: left;
-            border: 1px solid #ddd;
         }
+
         th {
-            background-color: #4CAF50;
+            background-color: #2c3e50;
             color: white;
         }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
+
+        /* Message Styling */
+        p {
+            margin-top: 20px;
+            font-weight: bold;
         }
-        tr:hover {
-            background-color: #5ba3d1;
-        }
+
         footer {
             text-align: center;
             padding: 10px;
-            background-color: #5ba3d1;
+            background-color: #2c3e50;
             color: white;
-            margin-top: 40px;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Barr -->
+    <!-- Navigation Bar -->
     <nav>
         <ul>
+            <li><a href="index.html">Home</a></li>
             <li><a href="appointment_management.jsp">Appointments</a></li>
             <li>
                 <a href="#">Management</a>
@@ -177,7 +145,16 @@
     </nav>
 
     <h1>Manage Appointments</h1>
-    <form action="AppoinmentServlet" method="POST">
+
+    <!-- Display Success or Error Message -->
+    <%
+        String message = request.getParameter("message");
+        if (message != null) {
+            out.println("<p style='color: red;'>" + message + "</p>");
+        }
+    %>
+
+    <form action="AppointmentServlet" method="POST">
         <input type="hidden" name="action" value="create">
         <label>User ID:</label><input type="text" name="userID" required><br>
         <label>Senior ID:</label><input type="text" name="seniorID" required><br>
@@ -203,17 +180,17 @@
         </tr>
         <%
             try (Connection conn = DBConnection.getConnection();
-                 PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Appoinment");
+                 PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Appointment");
                  ResultSet rs = stmt.executeQuery()) {
 
                 while (rs.next()) {
                     out.println("<tr>");
-                    out.println("<td>" + rs.getInt("AppoinmentID") + "</td>");
+                    out.println("<td>" + rs.getInt("AppointmentID") + "</td>");
                     out.println("<td>" + rs.getInt("UserID") + "</td>");
                     out.println("<td>" + rs.getInt("SeniorID") + "</td>");
                     out.println("<td>" + rs.getInt("CaregiverID") + "</td>");
-                    out.println("<td>" + rs.getString("AppoinmentDate") + "</td>");
-                    out.println("<td>" + rs.getString("AppoinmentTime") + "</td>");
+                    out.println("<td>" + rs.getString("AppointmentDate") + "</td>");
+                    out.println("<td>" + rs.getString("AppointmentTime") + "</td>");
                     out.println("<td>" + rs.getString("Description") + "</td>");
                     out.println("<td>" + rs.getString("Status") + "</td>");
                     out.println("</tr>");
