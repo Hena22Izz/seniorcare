@@ -4,28 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SeniorCare Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        /* Global Styles */
+        /* General Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f3f8fa;
             color: #333;
+            background-color: #f8fbff;
         }
 
         header {
-            background: linear-gradient(90deg, #5ba3d1, #ff6f61);
-            color: white;
-            padding: 20px;
+            background-color: #8bbdd9;
+            color: #fff;
+            padding: 1.5rem 2rem;
             text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        /* Navigation Menu */
-        nav {
-            background-color: #2a2f36;
-            overflow: hidden;
+        header h1 {
+            margin: 0;
         }
 
         nav ul {
@@ -34,282 +35,270 @@
             padding: 0;
             display: flex;
             justify-content: center;
+            background-color: #77aacc;
         }
 
-        nav li {
+        nav ul li {
             position: relative;
         }
 
-        nav a {
+        nav ul li a {
             display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 20px;
+            padding: 1rem;
+            color: #fff;
             text-decoration: none;
-            transition: background 0.3s;
         }
 
-        nav a:hover, nav li:hover > a {
-            background-color: #ff6f61;
-            color: white;
+        nav ul li:hover > a {
+            background-color: #5588aa;
         }
 
-        /* Dropdown Menu */
-        nav ul ul {
+        nav ul .dropdown {
             display: none;
             position: absolute;
-            background-color: #2a2f36;
             top: 100%;
             left: 0;
-            min-width: 150px;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #77aacc;
         }
 
-        nav ul li:hover > ul {
+        nav ul li:hover .dropdown {
             display: block;
         }
 
-        nav ul ul a {
-            padding: 10px 20px;
+        main {
+            padding: 2rem;
         }
 
-        nav ul ul a:hover {
-            background-color: #ff6f61;
-        }
-
-        /* Responsive Navigation */
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav ul ul {
-                position: static;
-            }
-
-            nav a {
-                padding: 10px;
-                text-align: left;
-            }
-        }
-
-        /* Hero Section */
         .hero {
-            background: url('https://via.placeholder.com/1920x400') no-repeat center center/cover;
-            color: black;
             text-align: center;
-            padding: 80px 20px;
-        }
-
-        .hero h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            font-size: 1.2em;
+            padding: 2rem;
+            background-color: #e4f3fc;
+            border-radius: 10px;
+            margin-bottom: 2rem;
         }
 
         .container {
-            padding: 20px 40px;
-        }
-
-        /* Card Section */
-        .card-section {
             display: flex;
+            justify-content: center;
             flex-wrap: wrap;
-            justify-content: space-between;
+            gap: 1.5rem;
         }
 
         .card {
-            background: white;
-            margin: 10px;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            flex: 1 1 calc(30% - 20px);
-            min-width: 250px;
-            border: 1px solid #e0e7eb;
+            background-color: #fff;
+            padding: 1.5rem;
+            border: 1px solid #d9d9d9;
+            border-radius: 10px;
+            text-align: center;
+            width: 250px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .card h3 {
             margin-top: 0;
-            color: #5ba3d1;
         }
 
-        .card a {
-            display: block;
-            margin-top: 10px;
-            color: #ff6f61;
+        .card .btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            color: #fff;
+            background-color: #8bbdd9;
             text-decoration: none;
-            font-weight: bold;
+            border-radius: 5px;
         }
 
-        .card a:hover {
-            text-decoration: underline;
+        .card .btn:hover {
+            background-color: #5588aa;
         }
 
-        /* About Section */
-        .about-section {
-            background-color: #ffffff;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .about-section h2 {
-            margin-bottom: 20px;
-            font-size: 2em;
-            color: #5ba3d1;
-        }
-
-        .about-section p {
-            font-size: 1.1em;
-            line-height: 1.6;
-            margin: 0 auto;
-            max-width: 800px;
-            color: #666;
-        }
-
-        /* Our Team Section */
-        .team-section {
-            background: #f3f8fa;
-            padding: 40px 20px;
-        }
-
-        .team-section h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2em;
-            color: #5ba3d1;
+        .about-section, .team-section {
+            margin-bottom: 2rem;
         }
 
         .team-grid {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
+            gap: 1.5rem;
         }
 
         .team-member {
             text-align: center;
-            margin: 10px;
-            padding: 20px;
-            flex: 1 1 calc(25% - 20px);
-            min-width: 200px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 150px;
         }
 
         .team-member img {
-            width: 150px; /* Set a fixed width */
-            height: 150px; /* Set a fixed height */
-            border-radius: 50%; /* Maintain circular shape */
-            object-fit: cover; /* Make sure the image covers the container without distortion */
-            margin-bottom: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .team-member h4 {
-            margin: 10px 0 5px;
-            color: #5ba3d1;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 0.5rem;
+            border: 2px solid #8bbdd9;
         }
 
         footer {
             text-align: center;
-            padding: 10px;
-            background-color: #5ba3d1;
-            color: white;
-            margin-top: 40px;
+            padding: 1rem;
+            background-color: #8bbdd9;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Mobile Styles */
+        @media screen and (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li a {
+                padding: 0.8rem;
+            }
+
+            .container {
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero {
+                padding: 1.5rem;
+            }
+
+            .team-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .team-member {
+                width: 200px;
+            }
+
+            footer {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Small Mobile Styles */
+        @media screen and (max-width: 480px) {
+            .hero {
+                padding: 1rem;
+            }
+
+            .card {
+                width: 90%;
+                max-width: 270px;
+                margin-bottom: 1rem;
+            }
+
+            .team-member {
+                width: 130px;
+            }
+
+            footer {
+                font-size: 0.7rem;
+                padding: 0.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to SeniorCare Dashboard</h1>
+        <h1>SeniorCare Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="appointment_management.jsp">Appointments</a></li>
+                <li><a href="#">Management</a>
+                    <ul class="dropdown">
+                        <li><a href="staffmanagement.html">Staff Management</a></li>
+                        <li><a href="patientmanagement.html">Patient Management</a></li>
+                        <li><a href="user.html">User Management</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="appointment_management.jsp">Appointments</a></li>
-            <li>
-                <a href="#">Management</a>
-                <ul>
-                    <li><a href="staffmanagement.html">Staff Management</a></li>
-                    <li><a href="patientmanagement.html">Patient Management</a></li>
-                    <li><a href="user.html">User Management</a></li>
-                </ul>
-            </li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="logout.html">Logout</a></li>
-        </ul>
-    </nav>
+    <!-- Main Content -->
+    <main>
+        <div class="hero">
+            <h1>Providing Care, Building Trust</h1>
+            <p>Your one-stop solution for managing senior care services efficiently.</p>
+        </div>
 
-    <div class="hero">
-        <h1>Providing Care, Building Trust</h1>
-        <p>Your one-stop solution for managing senior care services efficiently.</p>
-    </div>
-
-    <div class="container">
-        <div class="card-section">
+        <div class="container">
             <div class="card">
                 <h3>Manage Appointments</h3>
                 <p>View, create, and update appointments.</p>
-                <a href="appointment_management.jsp">Go to Appointments</a>
+                <a href="appointment_management.jsp" class="btn">Go to Appointments</a>
             </div>
 
             <div class="card">
                 <h3>Staff Management</h3>
                 <p>Manage staff information and roles.</p>
-                <a href="staffmanagement.html">Go to Staff Management</a>
+                <a href="staffmanagement.html" class="btn">Go to Staff Management</a>
             </div>
 
             <div class="card">
                 <h3>Patient Management</h3>
                 <p>View and manage patient records.</p>
-                <a href="patientmanagement.html">Go to Patient Management</a>
+                <a href="patientmanagement.html" class="btn">Go to Patient Management</a>
             </div>
 
             <div class="card">
                 <h3>User Management</h3>
                 <p>Manage user accounts and permissions.</p>
-                <a href="user.html">Go to User Management</a>
+                <a href="user.html" class="btn">Go to User Management</a>
             </div>
         </div>
-    </div>
 
-    <div class="about-section">
-        <h2>About SeniorCare</h2>
-        <p>SeniorCare is a comprehensive platform designed to streamline and enhance the management of senior care services. Our goal is to provide efficient, reliable, and user-friendly tools to empower caregivers, staff, and families in ensuring the best care for seniors.</p>
-    </div>
+        <div class="about-section">
+            <h2>About SeniorCare</h2>
+            <p>SeniorCare is a comprehensive platform designed to streamline and enhance the management of senior care services. Our goal is to provide efficient, reliable, and user-friendly tools to empower caregivers, staff, and families in ensuring the best care for seniors.</p>
+        </div>
 
-    <div class="team-section">
-        <h2>Our Team</h2>
-        <div class="team-grid">
-            <div class="team-member">
-                <img src="img/atul.jpg" alt="Member 1">
-                <h4>Atul</h4>
-                <p>Project Manager</p>
-            </div>
-            <div class="team-member">
-                <img src="img/madam.jpg" alt="Member 2">
-                <h4>Jannah</h4>
-                <p>Lead Developer</p>
-            </div>
-            <div class="team-member">
-                <img src="img/eypa.jpg" alt="Member 3">
-                <h4>Nazifah</h4>
-                <p>UI/UX Designer</p>
-            </div>
-            <div class="team-member">
-                <img src="img/hannah full.jpg" alt="Member 4">
-                <h4>Hannah</h4>
-                <p>Database Specialist</p>
+        <div class="team-section">
+            <h2>Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="img/atul.jpg" alt="Atul">
+                    <h4>Atul</h4>
+                    <p>Project Manager</p>
+                </div>
+                <div class="team-member">
+                    <img src="img/madam.jpg" alt="Jannah">
+                    <h4>Jannah</h4>
+                    <p>Lead Developer</p>
+                </div>
+                <div class="team-member">
+                    <img src="img/eypa.jpg" alt="Nazifah">
+                    <h4>Nazifah</h4>
+                    <p>UI/UX Designer</p>
+                </div>
+                <div class="team-member">
+                    <img src="img/hannah full.jpg" alt="Hannah">
+                    <h4>Hannah</h4>
+                    <p>Database Specialist</p>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 SeniorCare. All rights reserved.</p>
     </footer>

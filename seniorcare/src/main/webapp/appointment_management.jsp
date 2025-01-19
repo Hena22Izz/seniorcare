@@ -6,123 +6,211 @@
     <meta charset="UTF-8">
     <title>Appointment Management</title>
     <style>
-        /* Basic Reset */
-        body, h1, h2, p, table {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
+/* Basic Reset */
+body, h1, h2, p, table {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
 
-        /* Body Styling */
-        body {
-            background-color: #f4f4f4;
-            color: #333;
-            padding: 20px;
-        }
+/* Body Styling */
+body {
+    background-color: #eaf3fa;
+    color: #333;
+    padding: 20px;
+}
 
-        /* Navigation Bar Styling */
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            background-color: #2c3e50;
-        }
+/* Navigation Bar Styling */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    background-color: #007bff;
+    margin: 0;
+}
 
-        nav ul li {
-            display: inline-block;
-            position: relative;
-        }
+nav ul li {
+    display: inline-block;
+    position: relative;
+}
 
-        nav ul li a {
-            display: block;
-            padding: 10px 20px;
-            color: white;
-            text-decoration: none;
-        }
+nav ul li a {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+}
 
-        nav ul li a:hover {
-            background-color: #34495e;
-        }
+nav ul li a:hover {
+    background-color: #0056b3;
+}
 
-        nav ul li ul {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #2c3e50;
-            padding: 0;
-            min-width: 150px;
-        }
+nav ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #007bff;
+    padding: 0;
+    min-width: 150px;
+}
 
-        nav ul li:hover > ul {
-            display: block;
-        }
+nav ul li:hover > ul {
+    display: block;
+}
 
-        /* Form and Table Styling */
-        form {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-        }
+/* Form and Table Styling */
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
 
-        form label {
-            display: block;
-            margin: 8px 0;
-        }
+form label {
+    display: block;
+    margin: 8px 0;
+}
 
-        form input, form textarea, form button {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
+form input, form textarea, form button {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
 
-        form button {
-            background-color: #2c3e50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
+form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
 
-        form button:hover {
-            background-color: #34495e;
-        }
+form button:hover {
+    background-color: #0056b3;
+}
 
-        table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-        }
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
 
-        table, th, td {
-            border: 1px solid #ddd;
-        }
+table, th, td {
+    border: 1px solid #ddd;
+}
 
-        th, td {
-            padding: 12px;
-            text-align: left;
-        }
+th, td {
+    padding: 12px;
+    text-align: left;
+}
 
-        th {
-            background-color: #2c3e50;
-            color: white;
-        }
+th {
+    background-color: #007bff;
+    color: white;
+}
 
-        /* Message Styling */
-        p {
-            margin-top: 20px;
-            font-weight: bold;
-        }
+/* Message Styling */
+p {
+    margin-top: 20px;
+    font-weight: bold;
+}
 
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #2c3e50;
-            color: white;
-            margin-top: 30px;
-        }
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    margin-top: 30px;
+}
+
+footer nav {
+    margin-top: 10px;
+}
+
+footer nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer nav ul li {
+    display: inline-block;
+}
+
+footer nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0 15px;
+}
+
+footer nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+    /* Navigation Bar */
+    nav ul {
+        padding: 0;
+        text-align: center;
+    }
+
+    nav ul li {
+        display: block;
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    /* Form and Table */
+    form {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    form input, form textarea, form button {
+        width: 100%;
+    }
+
+    table {
+        font-size: 14px;
+        margin-top: 15px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    /* Footer */
+    footer {
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Smaller Screen Adjustments */
+    h1 {
+        font-size: 20px;
+    }
+
+    form label {
+        font-size: 14px;
+    }
+
+    form input, form textarea, form button {
+        font-size: 14px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+}
+
     </style>
 </head>
 <body>
