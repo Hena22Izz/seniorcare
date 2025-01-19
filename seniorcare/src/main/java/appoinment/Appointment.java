@@ -1,26 +1,17 @@
 package appoinment;
 
-import java.sql.Date;
-import java.sql.Time;
-
 public class Appointment {
     private int appointmentID;
     private int userID;
     private int seniorID;
     private int caregiverID;
-    private Date appointmentDate;
-    private Time appointmentTime;
+    private String appointmentDate;
+    private String appointmentTime;
     private String description;
     private String status;
 
-    // Default constructor
-    public Appointment() {
-    }
-
-    // Parameterized constructor
-    public Appointment(int appointmentID, int userID, int seniorID, int caregiverID, 
-                       Date appointmentDate, Time appointmentTime, 
-                       String description, String status) {
+    // Constructor
+    public Appointment(int appointmentID, int userID, int seniorID, int caregiverID, String appointmentDate, String appointmentTime, String description, String status) {
         this.appointmentID = appointmentID;
         this.userID = userID;
         this.seniorID = seniorID;
@@ -64,19 +55,19 @@ public class Appointment {
         this.caregiverID = caregiverID;
     }
 
-    public Date getAppointmentDate() {
+    public String getAppointmentDate() {
         return appointmentDate;
     }
 
-    public void setAppointmentDate(Date appointmentDate) {
+    public void setAppointmentDate(String appointmentDate) {
         this.appointmentDate = appointmentDate;
     }
 
-    public Time getAppointmentTime() {
+    public String getAppointmentTime() {
         return appointmentTime;
     }
 
-    public void setAppointmentTime(Time appointmentTime) {
+    public void setAppointmentTime(String appointmentTime) {
         this.appointmentTime = appointmentTime;
     }
 
@@ -94,19 +85,5 @@ public class Appointment {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        return "Appointment{" +
-                "appointmentID=" + appointmentID +
-                ", userID=" + userID +
-                ", seniorID=" + seniorID +
-                ", caregiverID=" + caregiverID +
-                ", appointmentDate=" + appointmentDate +
-                ", appointmentTime=" + appointmentTime +
-                ", description='" + description + '\'' +
-                ", status='" + status + '\'' +
-                '}';
     }
 }
