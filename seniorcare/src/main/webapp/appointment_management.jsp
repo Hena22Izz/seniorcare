@@ -255,7 +255,7 @@ footer nav ul li a:hover {
     </form>
 
     <h2>Appointments List</h2>
-    <table>
+<table>
         <tr>
             <th>ID</th>
             <th>User ID</th>
@@ -265,6 +265,7 @@ footer nav ul li a:hover {
             <th>Time</th>
             <th>Description</th>
             <th>Status</th>
+            <th>Actions</th>
         </tr>
         <%
             try (Connection conn = DBConnection.getConnection();
@@ -281,15 +282,28 @@ footer nav ul li a:hover {
                     out.println("<td>" + rs.getString("AppointmentTime") + "</td>");
                     out.println("<td>" + rs.getString("Description") + "</td>");
                     out.println("<td>" + rs.getString("Status") + "</td>");
+                    out.println("<td>");
+                    // Update Button
+                    out.println("<form action='AppointmentServlet' method='POST' style='display:inline;'>");
+                    out.println("<input type='hidden' name='action' value='update'>");
+                    out.println("<input type='hidden' name='appointmentID' value='" + rs.getInt("AppointmentID") + "'>");
+                    out.println("<button type='submit'>Update</button>");
+                    out.println("</form>");
+                    // Delete Button
+                    out.println("<form action='AppointmentServlet' method='POST' style='display:inline;'>");
+                    out.println("<input type='hidden' name='action' value='delete'>");
+                    out.println("<input type='hidden' name='appointmentID' value='" + rs.getInt("AppointmentID") + "'>");
+                    out.println("<button type='submit'>Delete</button>");
+                    out.println("</form>");
+                    out.println("</td>");
                     out.println("</tr>");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
-                out.println("<tr><td colspan='8'>Error loading data</td></tr>");
+                out.println("<tr><td colspan='9'>Error loading data</td></tr>");
             }
         %>
     </table>
-
     <footer>
         <p>&copy; 2025 SeniorCare. All rights reserved.</p>
     </footer>
