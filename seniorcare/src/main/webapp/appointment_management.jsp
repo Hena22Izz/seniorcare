@@ -222,7 +222,7 @@ footer nav ul li a:hover {
             <li>
                 <a href="#">Management</a>
                 <ul>
-                    <li><a href="staffmanagement.html">Staff Management</a></li>
+                    <li><a href="staff_management.html">Staff Management</a></li>
                     <li><a href="patientmanagement.html">Patient Management</a></li>
                     <li><a href="user.html">User Management</a></li>
                 </ul>
