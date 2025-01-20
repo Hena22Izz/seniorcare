@@ -1,51 +1,34 @@
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
+package DashboardServlet;
+
+import DashboardServlet.dao.CaregiverDAO;
+import DashboardServlet.models.Caregiver;
+import javax.servlet.*;
+import javax.servlet.http.*;
 import java.io.IOException;
-import java.sql.*;
+import java.sql.SQLException;
+import java.util.List;
 
 public class DashboardServlet extends HttpServlet {
+    private CaregiverDAO caregiverDAO;
+
+    @Override
+    public void init() throws ServletException {
+        caregiverDAO = new CaregiverDAO();
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        int seniorCount = 0, caregiverCount = 0, appointmentCount = 0;
-
+        String action = request.getParameter("action");
         try {
-            // Database connection
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/seniorcare", "root", "password");
-
-            // Query for seniors count
-            stmt = conn.prepareStatement("SELECT COUNT(*) AS count FROM seniors");
-            rs = stmt.executeQuery();
-            if (rs.next()) seniorCount = rs.getInt("count");
-
-            // Query for caregivers count
-            stmt = conn.prepareStatement("SELECT COUNT(*) AS count FROM caregivers");
-            rs = stmt.executeQuery();
-            if (rs.next()) caregiverCount = rs.getInt("count");
-
-            // Query for appointments count
-            stmt = conn.prepareStatement("SELECT COUNT(*) AS count FROM appointments");
-            rs = stmt.executeQuery();
-            if (rs.next()) appointmentCount = rs.getInt("count");
-
+            if ("view".equals(action)) {
+                List<Caregiver> caregivers = caregiverDAO.getAllCaregivers();
+                request.setAttribute("caregivers", caregivers);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/dashboard.jsp");
+                dispatcher.forward(request, response);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            try { if (rs != null) rs.close(); } catch (SQLException ignored) {}
-            try { if (stmt != null) stmt.close(); } catch (SQLException ignored) {}
-            try { if (conn != null) conn.close(); } catch (SQLException ignored) {}
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database Error");
         }
-
-        // Set attributes for JSP
-        request.setAttribute("seniorCount", seniorCount);
-        request.setAttribute("caregiverCount", caregiverCount);
-        request.setAttribute("appointmentCount", appointmentCount);
-
-        // Forward to JSP
-        RequestDispatcher dispatcher = request.getRequestDispatcher("dashboard.jsp");
-        dispatcher.forward(request, response);
     }
 }
