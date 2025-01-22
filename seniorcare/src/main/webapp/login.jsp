@@ -101,7 +101,7 @@
             </div>
         </c:if>
 
-        <form action="login" method="post">
+        <form action="LoginServlet" method="post">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" required>
